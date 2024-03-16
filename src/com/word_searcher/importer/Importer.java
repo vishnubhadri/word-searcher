@@ -1,7 +1,8 @@
 package com.word_searcher.importer;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface Importer {
-    void importAndProcessData() throws IOException;
+    List<String> importData() throws IOException;
 }
