@@ -19,7 +19,7 @@ public class TaskExecutor {
 
     public void executeTasks(List<List<String>> chunks, String[] names) {
         Map<String, List<Result>> results = new ConcurrentHashMap<>();
-        long cumulativeLineOffset = 0;
+        long cumulativeLineOffset = 1;
         for (List<String> chunk : chunks) {
             executor.execute(new Matcher(chunk, names, results, cumulativeLineOffset));
             cumulativeLineOffset += chunk.size();

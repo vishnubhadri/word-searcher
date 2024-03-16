@@ -8,6 +8,7 @@ public class Result {
         this.lineOffset = lineOffset;
         this.charOffset = charOffset;
     }
+
     @Override
     public String toString() {
         return "[lineOffset=" + lineOffset + ", charOffset=" + charOffset + "]";
