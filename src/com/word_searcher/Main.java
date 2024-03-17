@@ -9,7 +9,7 @@ public class Main {
 
     private static final String TEXT_URL = "http://norvig.com/big.txt";
     private static final String TEXT_FILE_PATH = "src/resources/big.txt";
-    private static final String[] NAMES = {"Timothy", "computer"};
+    private static final String[] NAMES = {"Timothy", "Raghu"};
 
     public static void main(String[] args) {
         try {

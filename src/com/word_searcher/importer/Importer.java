@@ -5,12 +5,10 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Importer {
+public abstract class Importer {
     protected List<String> lines;
 
-    public void importData() throws UnsupportedOperationException, IOException {
-        throw new UnsupportedOperationException("Method not implemented");
-    }
+    public abstract void importData() throws UnsupportedOperationException, IOException;
 
     public List<List<String>> process(int chunkSize) {
         List<List<String>> chunks = new LinkedList<>();
