@@ -2,7 +2,7 @@ package com.word_searcher.matcher;
 
 import com.word_searcher.result.Result;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +27,7 @@ public class Matcher implements Runnable {
                 int index = -1;
                 while ((index = line.indexOf(name, index + 1)) != -1) {
                     Result location = new Result(lineOffset, index + 1);
-                    results.computeIfAbsent(name, k -> new ArrayList<>()).add(location);
+                    results.computeIfAbsent(name, k -> new LinkedList<>()).add(location);
                 }
             }
             lineOffset++;

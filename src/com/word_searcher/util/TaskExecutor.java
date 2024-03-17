@@ -1,6 +1,7 @@
 package com.word_searcher.util;
 
 import com.word_searcher.aggregator.Aggregator;
+import com.word_searcher.importer.Importer;
 import com.word_searcher.matcher.Matcher;
 import com.word_searcher.result.Result;
 
@@ -17,10 +18,10 @@ public class TaskExecutor {
         this.executor = Executors.newCachedThreadPool();
     }
 
-    public void executeTasks(List<List<String>> chunks, String[] names) {
+    public void executeTasks(Importer chunks, int chunkSize, String[] names) {
         Map<String, List<Result>> results = new ConcurrentHashMap<>();
         long cumulativeLineOffset = 1;
-        for (List<String> chunk : chunks) {
+        for (List<String> chunk : chunks.process(chunkSize)) {
             executor.execute(new Matcher(chunk, names, results, cumulativeLineOffset));
             cumulativeLineOffset += chunk.size();
         }

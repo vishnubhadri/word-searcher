@@ -1,21 +1,27 @@
 package com.word_searcher.importer;
 
-import com.word_searcher.datasource.DataSource;
-import com.word_searcher.datasource.FileDataSource;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
-public class FileImporter implements Importer {
-    private final String url;
+public class FileImporter extends Importer {
+    private final String filePath;
 
-    public FileImporter(String url) {
-        this.url = url;
+    public FileImporter(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override
-    public List<String> importData() throws IOException {
-        DataSource dataSource = new FileDataSource(url);
-        return dataSource.readLines();
+    public void importData() throws IOException {
+        List<String> lines = new LinkedList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        }
+        super.lines = lines;
     }
 }

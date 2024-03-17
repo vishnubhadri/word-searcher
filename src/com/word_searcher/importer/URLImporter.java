@@ -1,30 +1,32 @@
-package com.word_searcher.datasource;
+package com.word_searcher.importer;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class URLDataSource implements DataSource {
+public class URLImporter extends Importer {
     private final String url;
 
-    public URLDataSource(String url) {
+    public URLImporter(String url) {
         this.url = url;
     }
 
     @Override
-    public List<String> readLines() throws IOException {
-        URL fileUrl = new URL(url);
+    public void importData() throws IOException {
+        System.out.println("Downloading...");
+        URL fileUrl = new URL(this.url);
         BufferedReader reader = new BufferedReader(new InputStreamReader(fileUrl.openStream()));
 
-        List<String> lines = new ArrayList<>();
+        List<String> lines = new LinkedList<>();
         String line;
         while ((line = reader.readLine()) != null) {
             lines.add(line);
         }
-
-        return lines;
+        super.lines = lines;
+        System.out.println("Downloaded");
     }
 }
