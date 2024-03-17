@@ -19,14 +19,14 @@ public class URLImporter extends Importer {
     public void importData() throws IOException {
         System.out.println("Downloading...");
         URL fileUrl = new URL(this.url);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(fileUrl.openStream()));
-
-        List<String> lines = new LinkedList<>();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            lines.add(line);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(fileUrl.openStream()))) {
+            List<String> lines = new LinkedList<>();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+            super.lines = lines;
+            System.out.println("Downloaded");
         }
-        super.lines = lines;
-        System.out.println("Downloaded");
     }
 }

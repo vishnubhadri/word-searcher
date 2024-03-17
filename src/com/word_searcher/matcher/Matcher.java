@@ -26,7 +26,7 @@ public class Matcher implements Runnable {
             for (String name : names) {
                 int index = -1;
                 while ((index = line.indexOf(name, index + 1)) != -1) {
-                    Result location = new Result(lineOffset, index + 1);
+                    Result location = new Result(lineOffset, (index + 1));
                     results.computeIfAbsent(name, k -> new LinkedList<>()).add(location);
                 }
             }

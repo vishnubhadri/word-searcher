@@ -2,7 +2,6 @@ package com.word_searcher;
 
 import com.word_searcher.importer.FileImporter;
 import com.word_searcher.importer.Importer;
-import com.word_searcher.importer.URLImporter;
 import com.word_searcher.util.TaskExecutor;
 
 
@@ -17,8 +16,8 @@ public class Main {
             Importer fileImporter = new FileImporter(TEXT_FILE_PATH);
             fileImporter.importData();
 
-            TaskExecutor FileTaskExecutor = new TaskExecutor();
-            FileTaskExecutor.executeTasks(fileImporter, 1000, NAMES);
+            TaskExecutor fileTaskExecutor = new TaskExecutor();
+            fileTaskExecutor.executeTasks(fileImporter, 1000, NAMES);
 
 
 //            Importer urlImporter = new URLImporter(TEXT_URL);
